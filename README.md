@@ -67,3 +67,8 @@ The system stores no reviewer names in the example workflow. Real deployments wo
 ## Author
 
 Akshith Moharampudi — Computer Science MComp graduate interested in responsible AI, information systems and reproducible research.
+
+
+## Controlled evaluation
+
+A first three-case synthetic evaluation is documented in [`docs/controlled_evaluation_results.md`](docs/controlled_evaluation_results.md). The reproducible supported, refuted and uncertain cases are stored in [`data/evaluation`](data/evaluation).
