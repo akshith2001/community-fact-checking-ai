@@ -1,0 +1,41 @@
+{
+  "claim": "Staff training caused the venue's electricity consumption to fall by exactly 25 percent.",
+  "topic": "energy",
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "title": "Incomplete monthly electricity note",
+      "text": "An internal note reports lower electricity consumption in the month after staff training, but it does not provide complete meter readings.",
+      "source_url": "https://example.org/incomplete-electricity-note",
+      "publisher": "Example Venue Operations Team",
+      "published_date": "2026-04-02",
+      "stance": "unclear",
+      "verified": false
+    },
+    {
+      "evidence_id": "E2",
+      "title": "Equipment maintenance record",
+      "text": "Refrigeration equipment was serviced during the same month as the staff training.",
+      "source_url": "https://example.org/maintenance-record",
+      "publisher": "Example Maintenance Contractor",
+      "published_date": "2026-04-03",
+      "stance": "unclear",
+      "verified": true
+    },
+    {
+      "evidence_id": "E3",
+      "title": "Seasonal operations note",
+      "text": "Customer numbers and outside temperature differed between the two months being compared.",
+      "source_url": "https://example.org/seasonal-operations-note",
+      "publisher": "Example Venue Operations Team",
+      "published_date": "2026-04-04",
+      "stance": "unclear",
+      "verified": true
+    }
+  ],
+  "reviews": [
+    {"reviewer_id": "anonymous-1", "vote": "uncertain", "confidence": 0.90, "rationale": "The incomplete readings cannot establish an exact reduction."},
+    {"reviewer_id": "anonymous-2", "vote": "uncertain", "confidence": 0.85, "rationale": "Maintenance is a competing explanation."},
+    {"reviewer_id": "anonymous-3", "vote": "uncertain", "confidence": 0.90, "rationale": "Different conditions prevent a causal conclusion."}
+  ]
+}
