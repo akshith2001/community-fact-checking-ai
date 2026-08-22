@@ -15,11 +15,24 @@ How can machine assistance help community fact-checkers find relevant evidence w
 5. Pauses high-stakes cases and always retains human approval.
 6. Writes a reproducible JSON report containing evidence metadata and safeguards.
 
+## Optional LLM mode (version 0.2)
+
+The original TF-IDF workflow remains the transparent baseline. An optional local Ollama model can now analyse only the supplied evidence and return a structured label, confidence, explanation and evidence IDs.
+
+The software validates every cited ID, rejects conclusions without citations, pauses invalid model output and always requires human review. The LLM never controls the final decision.
+
+```powershell
+ollama pull gemma3:4b
+factcheck-demo data/example_case.json --llm --ollama-model gemma3:4b --output outputs/llm_report.json
+```
+
+Ollama must be installed and running locally. Normal baseline use does not require Ollama or any API key.
+
 ## What it does not do
 
 - It does not browse for evidence or verify that a URL is truthful.
 - It does not infer evidence stance; stance is recorded by a reviewer or upstream process.
-- It does not use an LLM in version 0.1.
+- The version 0.1 baseline does not use an LLM; version 0.2 makes LLM analysis optional.
 - It must not be described as an automated truth detector or production system.
 
 This baseline is deliberate. A later LLM-assisted component can be compared against it for retrieval quality, calibration, unsupported claims, demographic bias and reviewer usefulness.
