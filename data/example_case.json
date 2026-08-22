@@ -1,0 +1,41 @@
+{
+  "claim": "Staff training alone can reduce a restaurant's electricity use by 30 percent.",
+  "topic": "energy",
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "title": "Operational energy training case report",
+      "text": "A small hospitality pilot observed lower electricity use after staff training, but equipment changes and seasonal demand were not controlled.",
+      "source_url": "https://example.org/case-report",
+      "publisher": "Example Hospitality Research Group",
+      "published_date": "2025-04-10",
+      "stance": "unclear",
+      "verified": true
+    },
+    {
+      "evidence_id": "E2",
+      "title": "Restaurant electricity intervention study",
+      "text": "The study found that combined maintenance, controls and staff engagement reduced electricity demand. It did not isolate a 30 percent effect from training alone.",
+      "source_url": "https://example.org/intervention-study",
+      "publisher": "Example Energy Institute",
+      "published_date": "2024-11-02",
+      "stance": "refutes",
+      "verified": true
+    },
+    {
+      "evidence_id": "E3",
+      "title": "Unverified social media post",
+      "text": "A restaurant manager says training always cuts electricity by at least 30 percent.",
+      "source_url": "https://example.org/social-post",
+      "publisher": "Unknown account",
+      "published_date": "2026-01-03",
+      "stance": "supports",
+      "verified": false
+    }
+  ],
+  "reviews": [
+    {"reviewer_id": "anonymous-1", "vote": "refuted", "confidence": 0.85, "rationale": "The percentage and the word alone are not supported."},
+    {"reviewer_id": "anonymous-2", "vote": "uncertain", "confidence": 0.70, "rationale": "Training may help but the size of the effect is unclear."},
+    {"reviewer_id": "anonymous-3", "vote": "refuted", "confidence": 0.80, "rationale": "The strongest evidence describes a combined intervention."}
+  ]
+}
