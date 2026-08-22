@@ -4,6 +4,7 @@ import unittest
 from pathlib import Path
 
 from community_factcheck.io import load_case, write_report
+from community_factcheck.llm import build_prompt, validate_analysis
 from community_factcheck.models import Case, Evidence, Review
 from community_factcheck.pipeline import assess_case
 from community_factcheck.ranking import rank_evidence, tokens
@@ -77,6 +78,41 @@ class PipelineTests(unittest.TestCase):
             output = Path(folder) / "report.json"
             write_report(output, report)
             self.assertEqual(json.loads(output.read_text())["claim"], case.claim)
+
+
+class FakeLLM:
+    def __init__(self, response):
+        self.response = response
+
+    def analyse(self, claim, evidence):
+        return self.response
+
+
+class LLMTests(unittest.TestCase):
+    def test_prompt_limits_model_to_supplied_evidence(self):
+        prompt = build_prompt("claim", (evidence("E1"),))
+        self.assertIn("using only the supplied evidence", prompt)
+        self.assertIn('"evidence_id": "E1"', prompt)
+
+    def test_valid_grounded_analysis_is_retained(self):
+        raw = {"label": "supported", "confidence": 0.8, "explanation": "E1 supports it.", "evidence_ids": ["E1"], "unsupported_claims": []}
+        result = validate_analysis(raw, {"E1"})
+        self.assertTrue(result["valid"])
+        self.assertTrue(result["requires_human_review"])
+
+    def test_invented_citation_is_rejected(self):
+        raw = {"label": "supported", "confidence": 0.8, "explanation": "E99 supports it.", "evidence_ids": ["E99"], "unsupported_claims": []}
+        result = validate_analysis(raw, {"E1"})
+        self.assertFalse(result["valid"])
+        self.assertIn("invented_evidence_ids", result["validation_reasons"])
+
+    def test_invalid_llm_output_pauses_pipeline(self):
+        case = Case("claim", "energy", (evidence("E1"), evidence("E2")), (
+            Review("a", "supported", 1.0, ""), Review("b", "supported", 1.0, ""), Review("c", "supported", 1.0, "")))
+        client = FakeLLM({"label": "supported", "confidence": 0.9, "explanation": "No citation", "evidence_ids": [], "unsupported_claims": []})
+        report = assess_case(case, llm_client=client)
+        self.assertEqual(report["safeguards"]["publication_status"], "paused")
+        self.assertIn("llm_output_invalid", report["safeguards"]["reasons"])
 
 
 if __name__ == "__main__":
