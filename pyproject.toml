@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "community-fact-checking-ai"
+version = "0.1.0"
+description = "A transparent research prototype for evidence ranking and community fact-checking review"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Akshith Moharampudi"}]
+license = {text = "MIT"}
+
+[project.scripts]
+factcheck-demo = "community_factcheck.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
