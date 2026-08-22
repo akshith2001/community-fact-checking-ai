@@ -1,0 +1,41 @@
+{
+  "claim": "The venue used more electricity after its lighting upgrade.",
+  "topic": "energy",
+  "evidence": [
+    {
+      "evidence_id": "E1",
+      "title": "Verified pre-upgrade meter summary",
+      "text": "The venue's verified smart-meter records show average daily electricity consumption of 120 kWh during the four weeks before the lighting upgrade.",
+      "source_url": "https://example.org/verified-pre-upgrade-records",
+      "publisher": "Example Independent Energy Auditor",
+      "published_date": "2026-02-01",
+      "stance": "refutes",
+      "verified": true
+    },
+    {
+      "evidence_id": "E2",
+      "title": "Verified post-upgrade meter summary",
+      "text": "The venue's verified smart-meter records show average daily electricity consumption of 96 kWh during the four weeks after the lighting upgrade.",
+      "source_url": "https://example.org/verified-post-upgrade-records",
+      "publisher": "Example Independent Energy Auditor",
+      "published_date": "2026-03-15",
+      "stance": "refutes",
+      "verified": true
+    },
+    {
+      "evidence_id": "E3",
+      "title": "Venue operating log",
+      "text": "Opening hours and recorded customer numbers were similar in the compared four-week periods.",
+      "source_url": "https://example.org/venue-operating-log",
+      "publisher": "Example Venue Operations Team",
+      "published_date": "2026-03-15",
+      "stance": "refutes",
+      "verified": true
+    }
+  ],
+  "reviews": [
+    {"reviewer_id": "anonymous-1", "vote": "refuted", "confidence": 0.90, "rationale": "The verified post-upgrade figure is lower, not higher."},
+    {"reviewer_id": "anonymous-2", "vote": "refuted", "confidence": 0.95, "rationale": "The claim contradicts the two meter summaries."},
+    {"reviewer_id": "anonymous-3", "vote": "refuted", "confidence": 0.85, "rationale": "Comparable operating conditions strengthen the contradiction."}
+  ]
+}
